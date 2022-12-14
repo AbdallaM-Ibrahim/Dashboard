@@ -13,7 +13,31 @@
         android:theme="@style/Theme.Dashboard"
         tools:targetApi="31">
         <activity
+            android:name=".forgotPassword"
+            android:exported="false"
+            android:theme="@style/Theme.Dashboard.NoActionBar">>
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".signUp"
+            android:exported="false"
+            android:theme="@style/Theme.Dashboard.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Dashboard.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".signIn"
             android:exported="true"
             android:theme="@style/Theme.Dashboard.NoActionBar">
             <intent-filter>

@@ -63,7 +63,7 @@ public class signIn extends AppCompatActivity {
                         Toast.makeText(context, "Wrong email address or password", Toast.LENGTH_LONG).show();
                     }
                 }catch (Exception e){
-                    Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "User does not exist", Toast.LENGTH_SHORT).show();
                 }
 
             }

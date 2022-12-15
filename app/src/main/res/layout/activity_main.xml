@@ -159,7 +159,8 @@
                             android:id="@+id/imageView3"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:src="@drawable/calculator" />
+                            android:src="@drawable/calculator"
+                            android:onClick="GoToCalculator"/>
 
                         <TextView
                             android:id="@+id/textViewUser3"

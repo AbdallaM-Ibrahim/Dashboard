@@ -50,6 +50,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity android:name=".Gpa_Calculator"
+            android:exported="true"
+            android:theme="@style/Theme.Dashboard.NoActionBar">
+
+        </activity>
+
+
     </application>
 
 </manifest>

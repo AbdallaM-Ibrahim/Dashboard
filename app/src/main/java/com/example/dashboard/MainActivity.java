@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    Intent GpaCalculator;
     Bundle bundle;
     String name;
     static String email;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
 
+        GpaCalculator = new Intent(this, Gpa_Calculator.class);
         bundle = getIntent().getExtras();
         name = bundle.getString("name");
         email = bundle.getString("email");
@@ -31,14 +33,21 @@ public class MainActivity extends AppCompatActivity {
         display_name.setText(name);
 
         log_out = findViewById(R.id.log_out);
-        log_out.setOnClickListener(view -> {
-            new lastSignedDB(context).logOut();
-            logOut();
+        log_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new lastSignedDB(context).logOut();
+                logOut();
+            }
         });
     }
 
     public void logOut(){
         finish();
         startActivity(new Intent(context,signIn.class));
+    }
+
+    public void GoToCalculator(View view){
+        startActivity(GpaCalculator);
     }
 }

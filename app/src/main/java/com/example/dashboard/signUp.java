@@ -3,8 +3,9 @@ package com.example.dashboard;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,35 +23,38 @@ public class signUp extends AppCompatActivity {
         context = getApplicationContext();
 
         sign_up2 = findViewById(R.id.sign_up2);
-        sign_up2.setOnClickListener(view -> {
-            email_in_sign_up = findViewById(R.id.email_in_sign_up);
-            password_in_sign_up = findViewById(R.id.password_in_sign_up);
-            password2_in_sign_up = findViewById(R.id.password2_in_sign_up);
-            first_name_in = findViewById(R.id.first_name_in);
-            last_name_in = findViewById(R.id.last_name_in);
+        sign_up2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                email_in_sign_up = findViewById(R.id.email_in_sign_up);
+                password_in_sign_up = findViewById(R.id.password_in_sign_up);
+                password2_in_sign_up = findViewById(R.id.password2_in_sign_up);
+                first_name_in = findViewById(R.id.first_name_in);
+                last_name_in = findViewById(R.id.last_name_in);
 
-            String email = email_in_sign_up.getText().toString();
-            String pass1 = password_in_sign_up.getText().toString();
-            String pass2 = password2_in_sign_up.getText().toString();
-            String first = first_name_in.getText().toString();
-            String last = last_name_in.getText().toString();
-            boolean valid = true;
+                String email = email_in_sign_up.getText().toString();
+                String pass1 = password_in_sign_up.getText().toString();
+                String pass2 = password2_in_sign_up.getText().toString();
+                String first = first_name_in.getText().toString();
+                String last = last_name_in.getText().toString();
+                Boolean valid = true;
 
-            if(!validEmail(email)){
-                valid = false;
-                Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show();
-            }
+                if(!validEmail(email)){
+                    valid = false;
+                    Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show();
+                }
 
-            if(!validPassword(pass1) | !validPassword(pass2)){
-                valid = false;
-                Toast.makeText(context, "password should be at least 8 characters", Toast.LENGTH_LONG).show();
-            }
+                if(!validPassword(pass1) | !validPassword(pass2)){
+                    valid = false;
+                    Toast.makeText(context, "password should be at least 8 characters", Toast.LENGTH_LONG).show();
+                }
 
 
-            if(pass1.equals(pass2) & valid) {
-                makeNewUser(email,pass1,first,last);
-            }else if(!pass1.equals(pass2)){
-                Toast.makeText(context, "passwords do not match", Toast.LENGTH_LONG).show();
+                if(pass1.equals(pass2) & valid) {
+                    makeNewUser(email,pass1,first,last);
+                }else if(!pass1.equals(pass2)){
+                    Toast.makeText(context, "passwords do not match", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -71,6 +75,10 @@ public class signUp extends AppCompatActivity {
     }
 
     public Boolean validPassword(String pass){
-        return pass.length() >= 8;
+        if(pass.length()>=8){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

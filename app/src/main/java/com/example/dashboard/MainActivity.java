@@ -31,12 +31,9 @@ public class MainActivity extends AppCompatActivity {
         display_name.setText(name);
 
         log_out = findViewById(R.id.log_out);
-        log_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new lastSignedDB(context).logOut();
-                logOut();
-            }
+        log_out.setOnClickListener(view -> {
+            new lastSignedDB(context).logOut();
+            logOut();
         });
     }
 

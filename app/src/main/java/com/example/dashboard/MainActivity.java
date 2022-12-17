@@ -1,6 +1,5 @@
 package com.example.dashboard;
 // 2022/12/15  9:55
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     static String email;
     TextView display_name;
     ImageView log_out;
+    ImageView listbut;
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
                 logOut();
             }
         });
+
+        listbut=findViewById(R.id.listbut);
+        listbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,list.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void logOut(){
@@ -50,4 +62,6 @@ public class MainActivity extends AppCompatActivity {
     public void GoToCalculator(View view){
         startActivity(GpaCalculator);
     }
+
+
 }

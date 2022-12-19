@@ -19,8 +19,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String ID = "id";
     private static final String TASK = "task";
     private static final String STATUS = "status";
+    private static final String USER = "user";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
-            + STATUS + " INTEGER)";
+            + STATUS + " INTEGER, " + USER + " TEXT)" ;
 
     private SQLiteDatabase db;
 
@@ -49,33 +50,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(STATUS, 0);
+        cv.put(USER, task.getUser());
         db.insert(TODO_TABLE, null, cv);
     }
 
-    public List<toDoModel> getAllTasks(){
+    public List<toDoModel> getAllTasks(String user){
         List<toDoModel> taskList = new ArrayList<>();
-        Cursor cur = null;
         db.beginTransaction();
-        try{
-            cur = db.query(TODO_TABLE, null, null, null, null, null, null, null);
-            if(cur != null){
-                if(cur.moveToFirst()){
-                    do{
-                        toDoModel task = new toDoModel();
-                        task.setId(cur.getInt(cur.getColumnIndex(ID)));
-                        task.setTask(cur.getString(cur.getColumnIndex(TASK)));
-                        task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
-                        taskList.add(task);
-                    }
-                    while(cur.moveToNext());
-                }
-            }
+        Cursor cur = db.rawQuery("select * from todo where user = '" + user + "'",null);
+        while (cur.moveToNext()){
+            toDoModel to = new toDoModel();
+            to.setId(cur.getInt(cur.getColumnIndex(ID)));
+            to.setTask(cur.getString(cur.getColumnIndex(TASK)));
+            to.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
+            to.setUser(cur.getString(cur.getColumnIndex(USER)));
+            taskList.add(to);
         }
-        finally {
-            db.endTransaction();
-            assert cur != null;
-            cur.close();
-        }
+        db.endTransaction();
         return taskList;
     }
 

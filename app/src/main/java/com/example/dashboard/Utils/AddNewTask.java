@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
+import com.example.dashboard.MainActivity;
 import com.example.dashboard.Model.toDoModel;
 import com.example.dashboard.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -107,6 +109,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     toDoModel task = new toDoModel();
                     task.setTask(text);
                     task.setStatus(0);
+                    task.setUser(MainActivity.email);
                     db.insertTask(task);
                 }
                 dismiss();

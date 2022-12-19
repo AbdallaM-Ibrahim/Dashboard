@@ -3,6 +3,7 @@ package com.example.dashboard;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -17,6 +18,7 @@ import com.example.dashboard.Utils.DialogCloseListener;
 import com.example.dashboard.Utils.RecyclerItemTouchHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class list extends AppCompatActivity implements DialogCloseListener {
     private FloatingActionButton fab;
     private List<toDoModel> taskList;//store all of our task
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,7 @@ public class list extends AppCompatActivity implements DialogCloseListener {
 
         db = new DatabaseHandler(this);
         db.openDatabase();
-        //this action help us to creat new card in recyclerview
+        //this action help us to create new card in recyclerview
         tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         //start give our Adapter the data base and activity to work on it
@@ -51,7 +54,7 @@ public class list extends AppCompatActivity implements DialogCloseListener {
 
         fab = findViewById(R.id.fab);
 
-        taskList = db.getAllTasks();
+        taskList = db.getAllTasks(MainActivity.email);
         Collections.reverse(taskList);
 
         tasksAdapter.setTasks(taskList);
@@ -66,7 +69,7 @@ public class list extends AppCompatActivity implements DialogCloseListener {
 
     @Override
     public void handleDialogClose(DialogInterface dialog){
-        taskList = db.getAllTasks();
+        taskList = db.getAllTasks(MainActivity.email);
         Collections.reverse(taskList);
         tasksAdapter.setTasks(taskList);
         tasksAdapter.notifyDataSetChanged();

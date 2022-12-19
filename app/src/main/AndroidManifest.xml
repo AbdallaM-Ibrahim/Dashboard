@@ -64,6 +64,15 @@
                 android:value="" />
         </activity>
 
+        <activity
+            android:name=".Settings"
+            android:exported="true"
+            android:theme="@style/Theme.Dashboard.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
 
 
     </application>

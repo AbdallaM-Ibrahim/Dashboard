@@ -1,6 +1,7 @@
 package com.example.dashboard;
 // 2022/12/15  9:55
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,17 +15,19 @@ public class MainActivity extends AppCompatActivity {
 
     Intent GpaCalculator;
     Bundle bundle;
-    String name;
-    static String email;
+    public static String name;
+    public static String email;
     TextView display_name;
-    ImageView log_out;
-    ImageView listbut;
+    ImageView log_out,listbut,settings;
     Context context;
+    public static Activity theMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
+
+        theMain = this;
 
         GpaCalculator = new Intent(this, Gpa_Calculator.class);
         bundle = getIntent().getExtras();
@@ -38,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new lastSignedDB(context).logOut();
-                logOut();
+
             }
         });
 
@@ -52,12 +54,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        settings = findViewById(R.id.settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Settings.class));
+            }
+        });
+
     }
 
-    public void logOut(){
-        finish();
-        startActivity(new Intent(context,signIn.class));
-    }
+
 
     public void GoToCalculator(View view){
         startActivity(GpaCalculator);

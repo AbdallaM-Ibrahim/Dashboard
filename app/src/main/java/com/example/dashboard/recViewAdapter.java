@@ -1,6 +1,7 @@
 package com.example.dashboard;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,8 @@ public class recViewAdapter extends RecyclerView.Adapter<recViewAdapter.ViewHold
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 subjects.get(holder.getAdapterPosition()).setGradeString(holder.gpa.get(position));
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+
             }
 
             @Override

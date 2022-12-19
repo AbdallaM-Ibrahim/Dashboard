@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:background="@color/deepBlack"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,24 +11,23 @@
         android:layout_height="wrap_content"
         android:layout_weight="100"
         android:orientation="vertical">
+
         <!--Text view for viewing The calculated GPA     -->
         <TextView
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:id="@+id/GpaViewer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:textAlignment="center"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <!--Recycler view for the added subjects        -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/itemList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/GpaViewer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/GpaViewer" />
@@ -38,8 +37,9 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_weight="1"
+        android:background="@color/black"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -50,8 +50,16 @@
             android:id="@+id/crHrsET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/gpa_calculator_edit_text_style"
+            android:cursorVisible="true"
+            android:gravity="center"
             android:hint="Subject Hours"
             android:inputType="number"
+            android:minHeight="48dp"
+            android:textColorHint="@color/deepBlack"
+            android:textCursorDrawable="@color/deepBlack"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -61,10 +69,16 @@
             android:id="@+id/ernHrsET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/cgpaET"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/cgpaET"
+            android:background="@drawable/gpa_calculator_edit_text_style"
+            android:cursorVisible="true"
             android:hint="Earned Hours"
             android:inputType="number"
+            android:gravity="center"
+            android:minHeight="48dp"
+            android:textColorHint="@color/deepBlack"
+            android:textCursorDrawable="@color/deepBlack"
             app:layout_constraintBottom_toTopOf="@+id/crHrsET"
             app:layout_constraintEnd_toStartOf="@+id/calculate"
             app:layout_constraintStart_toEndOf="@+id/cgpaET" />
@@ -75,18 +89,28 @@
             android:id="@+id/cgpaET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/gpa_calculator_edit_text_style"
+            android:cursorVisible="true"
             android:hint="CGPA"
             android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:gravity="center"
+            android:textColorHint="@color/deepBlack"
+            android:textCursorDrawable="@color/deepBlack"
             app:layout_constraintBottom_toTopOf="@+id/crHrsET"
             app:layout_constraintStart_toStartOf="parent" />
+
         <!--    The button which is clicked to calculate the GPA    -->
         <Button
             android:id="@+id/calculate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            app:cornerRadius="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/deepBlack"
             android:onClick="Calculate"
             android:text="Calculate"
             android:textAllCaps="false"
@@ -98,8 +122,11 @@
             android:id="@+id/AddSubj"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/calculate"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/deepBlack"
+            app:cornerRadius="10dp"
             android:onClick="addItem"
             android:text="Add Subject"
             android:textAllCaps="false"

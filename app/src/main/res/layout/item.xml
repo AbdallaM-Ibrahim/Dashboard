@@ -4,43 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
+    android:backgroundTint="@color/black"
     app:cardCornerRadius="15dp"
     app:contentPadding="10dp">
 
     <RelativeLayout
         android:id="@+id/item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/black">
 
-<!--    Text view to view the subject hours of the subject-->
+        <!--    Text view to view the subject hours of the subject-->
         <TextView
             android:id="@+id/crHrs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Number of Credit hours" />
+            android:text="Number of Credit hours"
+            android:textColor="@color/white" />
 
-<!--    The Spinner which holds the Grades of the subjects-->
+        <!--    The Spinner which holds the Grades of the subjects-->
         <Spinner
-            android:tooltipText="Grade"
             android:id="@+id/Spinner1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_centerVertical="true"
+            android:backgroundTint="@color/white"
             android:contentDescription="@string/app_name"
             android:gravity="center"
             android:minHeight="48dp"
-            android:layout_centerInParent="true" />
+            android:tooltipText="Grade" />
 
-<!--    Text View to show the hint to the user to make him know
-        that in order to delete this subject from the list they
-        must long click it                                      -->
+        <!--    Text View to show the hint to the user to make him know
+                that in order to delete this subject from the list they
+                must long click it                                      -->
         <TextView
             android:id="@+id/hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="Long\nClick\nTo\nDelete" />
+            android:text="Long\nClick\nTo\nDelete"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

@@ -18,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
     public static String name;
     public static String email;
     TextView display_name;
-    ImageView log_out,listbut,settings;
+    ImageView log_out, listbut, settings;
     Context context;
     public static Activity theMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +38,11 @@ public class MainActivity extends AppCompatActivity {
         display_name = findViewById(R.id.display_name);
         display_name.setText(name);
 
-        listbut=findViewById(R.id.listbut);
+        listbut = findViewById(R.id.listbut);
         listbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,list.class);
+                Intent intent = new Intent(MainActivity.this, list.class);
                 startActivity(intent);
             }
         });
@@ -50,15 +51,14 @@ public class MainActivity extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Settings.class));
+                startActivity(new Intent(getApplicationContext(), Settings.class));
             }
         });
 
     }
 
 
-
-    public void GoToCalculator(View view){
+    public void GoToCalculator(View view) {
         startActivity(GpaCalculator);
     }
 

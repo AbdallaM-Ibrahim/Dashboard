@@ -63,7 +63,7 @@ public class signUp extends AppCompatActivity {
             new accountsDB(context).creatNewUser(email, password, first, last);
             finish();
         }else{
-            Toast.makeText(context, new accountsDB(context).getName(email), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "User already exist", Toast.LENGTH_LONG).show();
         }
     }
 

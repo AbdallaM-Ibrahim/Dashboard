@@ -23,40 +23,40 @@ public class accountsDB extends SQLiteOpenHelper {
 
     }
 
-    public void creatNewUser(String email, String password,String first, String last){
+    public void creatNewUser(String email, String password, String first, String last) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put("email",email);
-        cv.put("password",password);
-        cv.put("first_name",first);
-        cv.put("last_name",last);
-        db.insert("accounts",null,cv);
+        cv.put("email", email);
+        cv.put("password", password);
+        cv.put("first_name", first);
+        cv.put("last_name", last);
+        db.insert("accounts", null, cv);
         db.close();
     }
 
-    public Boolean checkIfPasswordIsRight(String email, String password){
+    public Boolean checkIfPasswordIsRight(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT password FROM accounts WHERE email = '"+ email + "'",null);
+        Cursor c = db.rawQuery("SELECT password FROM accounts WHERE email = '" + email + "'", null);
         String pass = null;
 
-        while (c.moveToNext()){
+        while (c.moveToNext()) {
             pass = c.getString(0);
         }
 
-        if(pass.equals(password)){
+        if (pass.equals(password)) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
 
-    public String getName(String email){
+    public String getName(String email) {
 
         String first = null, last = null;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM accounts WHERE email = '"+email+"'",null);
-        while(c.moveToNext()){
+        Cursor c = db.rawQuery("SELECT * FROM accounts WHERE email = '" + email + "'", null);
+        while (c.moveToNext()) {
             first = c.getString(2);
             last = c.getString(3);
         }
@@ -64,7 +64,7 @@ public class accountsDB extends SQLiteOpenHelper {
         return first + " " + last;
     }
 
-    public void updatePassword(String email, String password){
+    public void updatePassword(String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("UPDATE accounts SET password = '" + password + "' WHERE email = '" + email + "'");
     }

@@ -2,17 +2,17 @@ package com.example.dashboard;
 
 public class Subject {
 
-//  Declare Attribute of the class subjects
+    //  Declare Attribute of the class subjects
     private int creditHours;
     private String GradeString;
     private double Grade = 0;
 
-//  Class constructor
+    //  Class constructor
     public Subject(int creditHours) {
         this.creditHours = creditHours;
     }
 
-//  Class constructor
+    //  Class constructor
     public Subject(int creditHours, String gradeString) {
         this.creditHours = creditHours;
         GradeString = gradeString;

@@ -13,9 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class signIn extends AppCompatActivity {
-    Button sign_in,sign_up;
+    Button sign_in, sign_up;
     Context context;
-    EditText email_in_sign_in,password_in_sign_in;
+    EditText email_in_sign_in, password_in_sign_in;
     CheckBox stay_signed;
     TextView forgot_password;
 
@@ -29,7 +29,7 @@ public class signIn extends AppCompatActivity {
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),forgotPassword.class));
+                startActivity(new Intent(getApplicationContext(), forgotPassword.class));
             }
         });
 
@@ -37,7 +37,7 @@ public class signIn extends AppCompatActivity {
             if (new lastSignedDB(context).isStaySigned()) {
                 login(new lastSignedDB(context).lastSigned());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -62,7 +62,7 @@ public class signIn extends AppCompatActivity {
                     } else {
                         Toast.makeText(context, "Wrong email address or password", Toast.LENGTH_LONG).show();
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(context, "User does not exist", Toast.LENGTH_SHORT).show();
                 }
 
@@ -79,15 +79,15 @@ public class signIn extends AppCompatActivity {
     }
 
     public void login(String email) {
-        Intent i = new Intent(context,MainActivity.class);
-        i.putExtra("name",new accountsDB(context).getName(email));
+        Intent i = new Intent(context, MainActivity.class);
+        i.putExtra("name", new accountsDB(context).getName(email));
         i.putExtra("email", email);
         finish();
         startActivity(i);
     }
 
-    public void goToSignUp(){
-        Intent i = new Intent(context,signUp.class);
+    public void goToSignUp() {
+        Intent i = new Intent(context, signUp.class);
         startActivity(i);
     }
 }

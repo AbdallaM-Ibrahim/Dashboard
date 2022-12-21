@@ -23,39 +23,39 @@ public class lastSignedDB extends SQLiteOpenHelper {
 
     }
 
-    public void userSigned(String email, Boolean stay){
+    public void userSigned(String email, Boolean stay) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM last");
         ContentValues cv = new ContentValues();
 
-        cv.put("email",email);
-        cv.put("stay_signed",Boolean.toString(stay));
-        db.insert("last",null,cv);
+        cv.put("email", email);
+        cv.put("stay_signed", Boolean.toString(stay));
+        db.insert("last", null, cv);
 
         db.close();
     }
 
-    public Boolean isStaySigned(){
+    public Boolean isStaySigned() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT stay_signed FROM last",null);
+        Cursor c = db.rawQuery("SELECT stay_signed FROM last", null);
         Boolean b = null;
-        while(c.moveToNext()){
+        while (c.moveToNext()) {
             b = Boolean.parseBoolean(c.getString(0));
         }
         return b;
     }
 
-    public String lastSigned(){
+    public String lastSigned() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT email FROM last",null);
+        Cursor c = db.rawQuery("SELECT email FROM last", null);
         String email = null;
-        while(c.moveToNext()){
+        while (c.moveToNext()) {
             email = c.getString(0);
         }
         return email;
     }
 
-    public void logOut(){
+    public void logOut() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("UPDATE last SET stay_signed = '" + "false" + "'");
     }

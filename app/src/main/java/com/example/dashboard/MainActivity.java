@@ -1,5 +1,6 @@
 package com.example.dashboard;
 // 2022/12/15  9:55
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     TextView display_name;
     ImageView log_out;
     Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void logOut(){
+    public void logOut() {
         finish();
-        startActivity(new Intent(context,signIn.class));
+        startActivity(new Intent(context, signIn.class));
     }
 
-    public void GoToCalculator(View view){
+    public void GoToCalculator(View view) {
         startActivity(GpaCalculator);
     }
 }

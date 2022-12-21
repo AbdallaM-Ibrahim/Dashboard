@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,6 +40,7 @@
                 tools:ignore="HardcodedText" />
 
         </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -159,8 +161,8 @@
                             android:id="@+id/imageView3"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:src="@drawable/calculator"
-                            android:onClick="GoToCalculator"/>
+                            android:onClick="GoToCalculator"
+                            android:src="@drawable/calculator" />
 
                         <TextView
                             android:id="@+id/textViewUser3"

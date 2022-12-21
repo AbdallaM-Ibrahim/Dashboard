@@ -11,6 +11,7 @@
     <color name="neutral">#9C8C8A</color>
     <color name="black">#202125</color>
     <color name="deepBlack">#000000</color>
+    <color name="grey">#2E2E2E</color>
     <color name="white">#FFFFFFFF</color>
     <color name="table_row">#F4F4F4</color>
 </resources>

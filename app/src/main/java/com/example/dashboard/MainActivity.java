@@ -37,13 +37,6 @@ public class MainActivity extends AppCompatActivity {
         display_name = findViewById(R.id.display_name);
         display_name.setText(name);
 
-        log_out = findViewById(R.id.log_out);
-        log_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         listbut=findViewById(R.id.listbut);
         listbut.setOnClickListener(new View.OnClickListener() {

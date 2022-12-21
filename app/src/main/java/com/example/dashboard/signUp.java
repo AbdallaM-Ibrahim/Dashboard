@@ -60,7 +60,7 @@ public class signUp extends AppCompatActivity {
 
     public void makeNewUser(String email,String password, String first, String last){
         if(new accountsDB(context).getName(email).equals(null + " " + null)) {
-            new accountsDB(context).creatNewUser(email, password, first, last);
+            new accountsDB(context).createNewUser(email, password, first, last);
             finish();
         }else{
             Toast.makeText(context, new accountsDB(context).getName(email), Toast.LENGTH_LONG).show();
@@ -74,10 +74,6 @@ public class signUp extends AppCompatActivity {
     }
 
     public Boolean validPassword(String pass){
-        if(pass.length()>=8){
-            return true;
-        }else{
-            return false;
-        }
+        return pass.length() >= 8;
     }
 }

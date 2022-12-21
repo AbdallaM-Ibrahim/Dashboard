@@ -23,7 +23,7 @@ public class accountsDB extends SQLiteOpenHelper {
 
     }
 
-    public void creatNewUser(String email, String password,String first, String last){
+    public void createNewUser(String email, String password, String first, String last){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("email",email);
@@ -38,17 +38,11 @@ public class accountsDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT password FROM accounts WHERE email = '"+ email + "'",null);
         String pass = null;
-
         while (c.moveToNext()){
             pass = c.getString(0);
         }
-
-        if(pass.equals(password)){
-            return true;
-        }else{
-            return false;
-        }
-
+        c.close();
+        return pass.equals(password);
     }
 
     public String getName(String email){
@@ -60,7 +54,7 @@ public class accountsDB extends SQLiteOpenHelper {
             first = c.getString(2);
             last = c.getString(3);
         }
-
+        c.close();
         return first + " " + last;
     }
 

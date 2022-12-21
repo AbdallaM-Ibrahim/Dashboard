@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         display_name = findViewById(R.id.display_name);
         display_name.setText(name);
 
-
         listbut=findViewById(R.id.listbut);
         listbut.setOnClickListener(new View.OnClickListener() {
             @Override

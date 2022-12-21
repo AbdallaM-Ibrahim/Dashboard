@@ -20,7 +20,8 @@ public class recViewAdapter extends RecyclerView.Adapter<recViewAdapter.ViewHold
 
     Context context;
     ArrayList<Subject> subjects;
-//  The constructor for our Recycler View Adapter
+
+    //  The constructor for our Recycler View Adapter
     public recViewAdapter(Context context, ArrayList<Subject> subjects) {
 
         this.context = context;
@@ -28,20 +29,20 @@ public class recViewAdapter extends RecyclerView.Adapter<recViewAdapter.ViewHold
 
     }
 
-//  The overridden onCreateViewHolder method for our View Holder
+    //  The overridden onCreateViewHolder method for our View Holder
     @Override
     public @NonNull
     ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false));
     }
 
-//  The overridden onBindViewHolder method for our View Holder
+    //  The overridden onBindViewHolder method for our View Holder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
 //      Sets the text view of the item to the entered number in the Subjects Hours Edit Text
-
         holder.crHrs.setText(String.valueOf(subjects.get(holder.getAdapterPosition()).getCreditHours()));
+
 //      Sets the Spinner of Grades to A by default
         holder.GradeSpinner.setSelection(0);
         subjects.get(holder.getAdapterPosition()).setGradeString(holder.gpa.get(0));
@@ -54,7 +55,8 @@ public class recViewAdapter extends RecyclerView.Adapter<recViewAdapter.ViewHold
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
 //      Long Click listener for the item of the list to delete the item
@@ -69,16 +71,16 @@ public class recViewAdapter extends RecyclerView.Adapter<recViewAdapter.ViewHold
         });
     }
 
-//  The overridden getItemCount method for our Adapter
+    //  The overridden getItemCount method for our Adapter
     @Override
     public int getItemCount() {
         return subjects.size();
     }
 
-//  View holder class which holds the created item of the recycler view
+    //  View holder class which holds the created item of the recycler view
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-//      Declare the needed XML elements
+        //      Declare the needed XML elements
         Spinner GradeSpinner;
         private final TextView crHrs;
         ArrayList<String> gpa;

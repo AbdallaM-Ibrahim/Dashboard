@@ -48,7 +48,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/profile_icon" />
+                android:src="@drawable/logo" />
 
             <TextView
                 android:id="@+id/user_name"
@@ -63,6 +63,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/edit_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
@@ -110,6 +111,7 @@
                     android:textStyle="bold" />
 
                 <ImageButton
+                    android:id="@+id/about_us"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

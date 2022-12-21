@@ -62,4 +62,10 @@ public class accountsDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("UPDATE accounts SET password = '" + password + "' WHERE email = '" + email + "'");
     }
+
+    public void updateName(String email,String first,String last){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("update accounts set first_name = '" + first + "',last_name = '" + last + "' where email = '" + email + "'");
+        db.close();
+    }
 }

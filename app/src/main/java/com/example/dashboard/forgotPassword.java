@@ -26,6 +26,7 @@ public class forgotPassword extends AppCompatActivity {
         context = getApplicationContext();
 
         email_in_forgot = findViewById(R.id.email_in_forgot);
+        email_in_forgot.setText(MainActivity.email);
         password_in_forgot = findViewById(R.id.password_in_forgot);
         password2_in_forgot = findViewById(R.id.password2_in_forgot);
 
@@ -38,24 +39,28 @@ public class forgotPassword extends AppCompatActivity {
                 String pass1 = password_in_forgot.getText().toString();
                 String pass2 = password2_in_forgot.getText().toString();
 
-                if(!validEmail(email)){
-                    valid = false;
-                    Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show();
+                if(!new accountsDB(getApplicationContext()).getName(email).equals(null + " " + null)) {
+
+                    if (!validEmail(email)) {
+                        valid = false;
+                        Toast.makeText(context, "Invalid email", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if (!validPassword(pass1) | !validPassword(pass2)) {
+                        valid = false;
+                        Toast.makeText(context, "password should be at least 8 characters", Toast.LENGTH_LONG).show();
+                    }
+
+
+                    if (pass1.equals(pass2) & valid) {
+                        new accountsDB(context).updatePassword(email, pass1);
+                        finish();
+                    } else if (!pass1.equals(pass2)) {
+                        Toast.makeText(context, "passwords do not match", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(context, "Email address doesn't exist", Toast.LENGTH_SHORT).show();
                 }
-
-                if(!validPassword(pass1) | !validPassword(pass2)){
-                    valid = false;
-                    Toast.makeText(context, "password should be at least 8 characters", Toast.LENGTH_LONG).show();
-                }
-
-
-                if(pass1.equals(pass2) & valid) {
-                    new accountsDB(context).updatePassword(email,pass1);
-                    finish();
-                }else if(!pass1.equals(pass2)){
-                    Toast.makeText(context, "passwords do not match", Toast.LENGTH_LONG).show();
-                }
-
             }
         });
     }

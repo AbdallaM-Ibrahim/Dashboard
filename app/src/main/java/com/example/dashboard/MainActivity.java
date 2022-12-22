@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public static String name;
     public static String email;
     TextView display_name;
-    ImageView log_out,listbut,settings;
+    ImageView schedule,listbut,settings;
     Context context;
     public static Activity theMain;
     @Override
@@ -54,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        schedule = findViewById(R.id.schedule);
+        schedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,ScheduleJava.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -62,5 +71,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(GpaCalculator);
     }
 
+    public void onStart(){
+        super.onStart();
+        display_name.setText(name);
+    }
 
 }
